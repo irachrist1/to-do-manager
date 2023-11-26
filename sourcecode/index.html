@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="styles.css">
+<body>
+  <div class="container">
+
+    <div class="dark-mode-switch">
+      <label for="darkModeToggle">Dark Mode:</label>
+      <input type="checkbox" id="darkModeToggle">
+    </div>
+
+    <h1>To-Do List</h1>
+
+    <div class="input-container">
+      <input type="text" id="taskInput" class="task-input" placeholder="Enter task...">
+      <input type="date" id="dueDateInput" class="due-date-input">
+      <select id="priorityInput">
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+      </select>
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <div class="filter-container">
+      <button class="clear-btn" onclick="filterTasks('all')">All</button>
+      <button class="clear-btn" onclick="filterTasks('active')">Active</button>
+      <button class="clear-btn" onclick="filterTasks('completed')">Completed</button>
+    </div>
+
+    <div class="sort-container">
+      <button class="clear-btn" onclick="sortTasks('name')">Sort by Name</button>
+      <button class="clear-btn" onclick="sortTasks('date')">Sort by Date</button>
+      <button class="clear-btn" onclick="sortTasks('priority')">Sort by Priority</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <div id="editTaskModal" class="modal">
+    <div class="modal-content">
+      <h2>Edit Task</h2>
+      <input type="text" id="editTaskNameInput" placeholder="Edit task name...">
+      <input type="date" id="editDueDateInput" class="due-date-input">
+      <textarea id="editDescriptionInput" placeholder="Edit description..."></textarea>
+      <button onclick="saveEditedTask()">Save</button>
+      <button onclick="closeEditTaskModal()">Cancel</button>
+    </div>
+  </div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
