@@ -1,15 +1,21 @@
+// Get input elements and task list container
+
 const taskInput = document.getElementById('taskInput');
 const dueDateInput = document.getElementById('dueDateInput');
 const priorityInput = document.getElementById('priorityInput');
 const taskList = document.getElementById('taskList');
 let tasks = [];
 
+// Function to add a new task
 function addTask() {
   const taskName = taskInput.value.trim();
   const dueDate = dueDateInput.value;
   const priority = priorityInput.value;
 
   if (taskName === '') return;
+
+
+  // Create a new task object
 
   const task = {
     id: Date.now(),
@@ -26,6 +32,9 @@ function addTask() {
   dueDateInput.value = '';
   priorityInput.value = 'low';
 }
+
+
+// Function to render a task on the UI
 
 function renderTask(task) {
   const taskItem = document.createElement('li');
@@ -58,6 +67,8 @@ function deleteTask(id) {
   renderTasks();
 }
 
+
+  // Apply priority class based on task priority
 function toggleComplete(id) {
   tasks = tasks.map(task => {
     if (task.id === id) {
@@ -88,6 +99,9 @@ function filterTasks(filterType) {
     button.classList.toggle('active', button.innerText.toLowerCase() === filterType);
   });
 }
+
+
+// Function to save tasks to local storage
 
 function sortTasks(sortBy) {
   let sortedTasks = [];
@@ -148,6 +162,11 @@ function openEditTaskModal(taskId) {
   }
 }
 
+
+
+// Function to close the edit task modal
+
+
 function closeEditTaskModal() {
   editingTaskId = null;
   const modal = document.getElementById('editTaskModal');
@@ -182,6 +201,11 @@ function saveEditedTask() {
     closeEditTaskModal();
   }
 }
+
+
+
+ // Set Darkmode and input values to the task detail up in the codes before
+
 
 function toggleDarkMode() {
   const body = document.body;
