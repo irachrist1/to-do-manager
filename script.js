@@ -1,9 +1,11 @@
+// DEFINING CONST AND FUNCTIONS TASKS 
 const taskInput = document.getElementById('taskInput');
 const dueDateInput = document.getElementById('dueDateInput');
 const priorityInput = document.getElementById('priorityInput');
 const taskList = document.getElementById('taskList');
 let tasks = [];
 
+// FUNCTION TO ADD TASK 
 function addTask() {
   const taskName = taskInput.value.trim();
   const dueDate = dueDateInput.value;
@@ -27,6 +29,7 @@ function addTask() {
   priorityInput.value = 'low';
 }
 
+// FUNCTION TO RENDER THE FIRST AND LIST OF TASKS 
 function renderTask(task) {
   const taskItem = document.createElement('li');
   taskItem.innerHTML = `
@@ -38,6 +41,7 @@ function renderTask(task) {
   <button class="edit-btn" onclick="openEditTaskModal(${task.id})">Edit</button>
 `;
 
+// SETTING PRIORITIES TO HIGH, LOW, MEDIUM 
   if (task.priority === 'low') {
     taskItem.classList.add('low-priority');
   } else if (task.priority === 'medium') {
@@ -51,13 +55,13 @@ function renderTask(task) {
   }
   taskList.appendChild(taskItem);
 }
-
+// FUNCTION TO DELETE THE TASK BY ID 
 function deleteTask(id) {
   tasks = tasks.filter(task => task.id !== id);
   saveToLocalStorage();
   renderTasks();
 }
-
+// FUNCTION TO REMOVE THE TASK
 function toggleComplete(id) {
   tasks = tasks.map(task => {
     if (task.id === id) {
@@ -68,7 +72,7 @@ function toggleComplete(id) {
   saveToLocalStorage();
   renderTasks();
 }
-
+// FUNCTION TO FILTER BY TYPE 
 function filterTasks(filterType) {
   let filteredTasks = [];
   switch (filterType) {
